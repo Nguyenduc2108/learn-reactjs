@@ -6,6 +6,30 @@
         <title>Document</title>
     </head>
     <body>
+        <!-- 
+            1.document.createElement()
+            2.document.body.appendChild()
+            3.console.dir()
+            4. innerText, id, className,style 
+        -->
+        <div id="root"></div>
         <h1>hello react</h1>
+
+        <script>
+            const root = document.getElementById("root");
+            const h2 = document.createElement("h2");
+
+            h2.innerText = "hello react";
+            h2.id = "heading";
+            h2.className = "heading test";
+            Object.assign(h2.style, {
+                color: "blue",
+                fontSize: "24px",
+            });
+
+            root.appendChild(h2);
+
+            console.log(h2);
+        </script>
     </body>
 </html>
