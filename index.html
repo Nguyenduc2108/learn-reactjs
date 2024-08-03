@@ -4,18 +4,24 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script
+            src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+            crossorigin
+        ></script>
     </head>
     <body>
+        <!-- Phần 1 -->
         <!-- 
             1.document.createElement()
             2.document.body.appendChild()
             3.console.dir()
             4. innerText, id, className,style 
         -->
-        <div id="root"></div>
-        <h1>hello react</h1>
+        <!-- <div id="root"></div>
+        <h1>hello react</h1> -->
 
-        <script>
+        <!-- <script>
             const root = document.getElementById("root");
             const h2 = document.createElement("h2");
 
@@ -30,6 +36,189 @@
             root.appendChild(h2);
 
             console.log(h2);
+        </script> -->
+
+        <!-- ================================= -->
+        <!-- Phần 2 -->
+        <!-- <h1>Add React to website!</h1> -->
+        <!-- 
+            1.Github, NPMJS, UNPKG
+            2.Add React to a Website
+            3.Office doc 
+        -->
+
+        <!-- ================================= -->
+        <!-- Phần 3 -->
+        <!-- 
+            1.React.createElement() => React Element
+            2.So sánh với document.createElement() => DOM Element
+            3.Thay đổi: id, className, style,... => props
+            4.Thêm: text, HTML
+            5.Tạo: 
+                <h1 title="Hello" class="heading">Hello guys!</h1>  
+            6.Tạo:
+                <ul>
+                    <li>Javascript</li>
+                    <li>ReactJS</li>
+                </ul>
+            7.Tạo:
+                <div class="post-item">
+                    <h2 title="learn ReactJS">learn ReactJS</h2>
+                    <p title="learn ReactJS is very easy">learn ReactJS is very easy</p>
+                </div>
+
+           
+        -->
+        <!-- <script>
+            // DOM
+            const h1Dom = document.createElement("h1");
+
+            h1Dom.innerText = "Hello";
+            h1Dom.className = "heading";
+            h1Dom.innerText = "Hello guys!";
+
+            document.body.appendChild(h1Dom);
+
+            const ulDom = document.createElement("ul");
+            ulDom.id = "id-ul";
+            ulDom.style.color = "red";
+            const li1 = document.createElement("li");
+            li1.innerText = "Javascript";
+
+            const li2 = document.createElement("li");
+            li2.innerText = "ReactJS";
+
+            ulDom.appendChild(li1);
+            ulDom.appendChild(li2);
+            document.body.appendChild(ulDom);
+
+            const postItem1 = document.createElement("div");
+
+            const h2 = document.createElement("h2");
+            h2.title = "learn ReactJS";
+            h2.innerText = "learn ReactJS";
+
+            const p = document.createElement("p");
+            p.title = "learn ReactJS is very easy";
+            p.innerText = "learn ReactJS is very easy";
+
+            postItem1.appendChild(h2);
+            postItem1.appendChild(p);
+            document.body.appendChild(postItem1);
+
+            // =================================
+            // React => React-DOM
+            // React.createElement(type, props, children, n)
+
+            const h1React = React.createElement(
+                "h1",
+                {
+                    title: "Hello",
+                    className: "heading",
+                },
+                "Hello guys!"
+            );
+            console.dir(h1Dom);
+            console.log(h1React);
+
+            const ulReact = React.createElement(
+                "ul",
+                {
+                    id: "id-ul",
+                    style: {
+                        color: "red",
+                    },
+                },
+                React.createElement("li", null, "Javascript"),
+                React.createElement("li", null, "ReactJS")
+            );
+            console.log(ulReact);
+
+            const postItem = React.createElement(
+                "div",
+                {
+                    className: "post-item",
+                },
+
+                React.createElement(
+                    "h2",
+                    {
+                        title: "learn ReactJS",
+                    },
+                    "learn ReactJS"
+                ),
+                React.createElement(
+                    "p",
+                    {
+                        title: "learn ReactJS is very easy",
+                    },
+                    "learn ReactJS is very easy"
+                )
+            );
+            console.log(postItem);
+        </script> -->
+
+        <!-- ================================= -->
+        <!-- Phần 4 -->
+        <!-- 
+            1.Tại sao phải sử dụng React-DOM
+            2.Tại sao lại tách ra React và React-DOM
+            3.Render UI 
+
+            React Native => IOS, Android
+        -->
+        <div id="root"></div>
+        <script>
+            // React
+            const postItem = React.createElement(
+                "div",
+                {
+                    className: "post-item",
+                },
+                React.createElement(
+                    "h2",
+                    {
+                        title: "learn ReactJS",
+                    },
+                    "learn ReactJS"
+                ),
+                React.createElement("p", {}, "learn ReactJS is very easy")
+            );
+
+            // Get root element
+            const container = document.getElementById("root");
+
+            // React@17
+            // React-DOM => render UI
+            // ReactDOM.render(postItem, root);
+
+            // React@18
+            const root = ReactDOM.createRoot(container);
+            root.render(postItem);
+
+            const container1 = document.getElementById("root");
+            const root1 = ReactDOM.createRoot(container1);
+            const h1 = React.createElement(
+                "h1",
+                {
+                    title: "Hello",
+                    className: "Hello",
+                },
+                "Hello guys!"
+            );
+
+            const ul = React.createElement(
+                "ul",
+                null,
+                React.createElement("li", null, "Javascript"),
+                React.createElement("li", null, "ReactJS")
+            );
+
+            // ReactDOM.render(h1, root1);
+            // ReactDOM.render(ul, root1);
+
+            root1.render(h1);
+            root1.render(ul);
         </script>
     </body>
 </html>
