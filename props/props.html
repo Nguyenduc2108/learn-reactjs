@@ -5,10 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Prop - React</title>
         <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-        <script
-            src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-            crossorigin
-        ></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     </head>
     <body>
@@ -52,7 +49,13 @@
                 return (
                     <div>
                         <img src={image_url} alt={title} />
-                        <h2>{title}</h2>
+                        <h2
+                            onClick={() => {
+                                alert(title);
+                            }}
+                        >
+                            {title}
+                        </h2>
                         <p>{description}</p>
                         <span>{price}</span>
                     </div>
@@ -67,8 +70,7 @@
                     slug: "htmlcss",
                     description:
                         "Từ cơ bản tới chuyên sâu, thực hành 8 dự án, hàng trăm bài tập, trang hỏi đáp riêng, cấp chứng chỉ sau khóa học và mua một lần học mãi mãi.",
-                    image_url:
-                        "https://files.fullstack.edu.vn/f8-prod/courses/15/62f13d2424a47.png",
+                    image_url: "https://files.fullstack.edu.vn/f8-prod/courses/15/62f13d2424a47.png",
                     icon_url: "https://files.fullstack.edu.vn/f8-prod/courses/15/62385d6c63dfa.png",
                     price: 1299000,
                     old_price: 2500000,
@@ -93,8 +95,7 @@
                     slug: "sass",
                     description:
                         "Đây là một khóa học nhỏ được tách ra từ 2 chương học trong khóa HTML CSS Pro. Kiến thức về Sass trong khóa này bạn có thể áp dụng ngay vào các dự án của bạn.",
-                    image_url:
-                        "https://files.fullstack.edu.vn/f8-prod/courses/27/64e184ee5d7a2.png",
+                    image_url: "https://files.fullstack.edu.vn/f8-prod/courses/27/64e184ee5d7a2.png",
                     icon_url: "https://files.fullstack.edu.vn/f8-prod/courses/27/64e0daf212fad.png",
                     price: 299000,
                     old_price: 400000,
@@ -118,8 +119,7 @@
                     title: "JavaScript Pro",
                     slug: "javascript",
                     description: "Khóa học JavaScript Pro",
-                    image_url:
-                        "https://files.fullstack.edu.vn/f8-prod/courses/19/66aa28194b52b.png",
+                    image_url: "https://files.fullstack.edu.vn/f8-prod/courses/19/66aa28194b52b.png",
                     icon_url: "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb685c81.png",
                     price: 1699000,
                     old_price: 3299000,
