@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Prop - React</title>
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script
+            src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+            crossorigin
+        ></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <!-- 
+        Props
+
+        - React element
+            - Sử dụng props giống như với attribute của thẻ HTML
+            - 2 props class, for => className, htmlFor
+            - phải tuân theo quy ước có sẵn
+        - React components
+            - Sử dụng props giống như đối số cho component 
+            - Tự do đặt tên props
+                - Đặt theo kiểu camelCase
+                - *Có thể bao gồm dấu gạch ngang
+        - Chú ý:
+            - Prop "key" là prop đặc biệt
+            - Props cơ bản là đối số của Component
+              => Props có thể là bất kỳ kiểu dữ liệu nào
+            - Sử dụng destructuring để lấy giá trị props
+         -->
+
+        <div id="root"></div>
+        <script type="text/babel">
+            // PostItem.js
+            // function PostItem({ className, title, content, callback = () => {} }) {
+            //     callback(Math.random());
+
+            //     return (
+            //         <div className={className}>
+            //             <label htmlFor="text">Name</label>
+            //             <input type="text" id="text" />
+            //             <h2>{title}</h2>
+            //             <p>{content}</p>
+            //         </div>
+            //     );
+            // }
+
+            // CourseItem.js
+            function CourseItem({ title, description, image_url, price }) {
+                return (
+                    <div>
+                        <img src={image_url} alt={title} />
+                        <h2>{title}</h2>
+                        <p>{description}</p>
+                        <span>{price}</span>
+                    </div>
+                );
+            }
+
+            // App.js
+            const coursesList = [
+                {
+                    id: 15,
+                    title: "HTML CSS Pro",
+                    slug: "htmlcss",
+                    description:
+                        "Từ cơ bản tới chuyên sâu, thực hành 8 dự án, hàng trăm bài tập, trang hỏi đáp riêng, cấp chứng chỉ sau khóa học và mua một lần học mãi mãi.",
+                    image_url:
+                        "https://files.fullstack.edu.vn/f8-prod/courses/15/62f13d2424a47.png",
+                    icon_url: "https://files.fullstack.edu.vn/f8-prod/courses/15/62385d6c63dfa.png",
+                    price: 1299000,
+                    old_price: 2500000,
+                    pre_order_price: 699000,
+                    is_pro: true,
+                    is_published: true,
+                    is_selling: true,
+                    is_pre_order: false,
+                    is_coming_soon: false,
+                    students_count: 0,
+                    videos_count: 590,
+                    duration: 419594,
+                    duration_text: "116h33p",
+                    user_progress: 99,
+                    last_completed_at: "2024-07-03 01:39:59",
+                    landing_page_url: "/landing/htmlcss",
+                    published_at: "2022-08-18T17:00:00.000000Z",
+                },
+                {
+                    id: 27,
+                    title: "Ngôn ngữ Sass",
+                    slug: "sass",
+                    description:
+                        "Đây là một khóa học nhỏ được tách ra từ 2 chương học trong khóa HTML CSS Pro. Kiến thức về Sass trong khóa này bạn có thể áp dụng ngay vào các dự án của bạn.",
+                    image_url:
+                        "https://files.fullstack.edu.vn/f8-prod/courses/27/64e184ee5d7a2.png",
+                    icon_url: "https://files.fullstack.edu.vn/f8-prod/courses/27/64e0daf212fad.png",
+                    price: 299000,
+                    old_price: 400000,
+                    pre_order_price: 0,
+                    is_pro: true,
+                    is_published: true,
+                    is_selling: true,
+                    is_pre_order: false,
+                    is_coming_soon: false,
+                    students_count: 0,
+                    videos_count: 27,
+                    duration: 22690,
+                    duration_text: "6h18p",
+                    user_progress: 0,
+                    last_completed_at: null,
+                    landing_page_url: "/landing/sass",
+                    published_at: "2023-08-19T15:06:00.000000Z",
+                },
+                {
+                    id: 19,
+                    title: "JavaScript Pro",
+                    slug: "javascript",
+                    description: "Khóa học JavaScript Pro",
+                    image_url:
+                        "https://files.fullstack.edu.vn/f8-prod/courses/19/66aa28194b52b.png",
+                    icon_url: "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb685c81.png",
+                    price: 1699000,
+                    old_price: 3299000,
+                    pre_order_price: 1199000,
+                    is_pro: true,
+                    is_published: false,
+                    is_selling: true,
+                    is_pre_order: true,
+                    is_coming_soon: false,
+                    students_count: 0,
+                    videos_count: 86,
+                    duration: 49309,
+                    duration_text: "13h41p",
+                    user_progress: 36,
+                    last_completed_at: "2024-08-04 06:38:18",
+                    landing_page_url: "/landing/javascript",
+                    published_at: "2024-08-07T17:00:00.000000Z",
+                },
+            ];
+            function App() {
+                return (
+                    <div className="wrapper">
+                        {coursesList.map((course) => {
+                            return (
+                                <CourseItem
+                                    key={course.id}
+                                    title={course.title}
+                                    description={course.description}
+                                    image_url={course.image_url}
+                                    price={course.price}
+                                />
+                            );
+                        })}
+                    </div>
+                );
+
+                // <div id="wrapper">
+                //     <PostItem
+                //         className="post-item"
+                //         title="This is post item 1"
+                //         content="Lorem ipsum dolor sit amet."
+                //         data={[
+                //             { id: 1, name: "Post 1" },
+                //             { id: 2, name: "Post 2" },
+                //         ]}
+                //         callback={(random) => {
+                //             console.log(random);
+                //         }}
+                //     />
+                //     <PostItem
+                //         className="post-item"
+                //         title="This is post item 1"
+                //         content="Lorem ipsum dolor sit amet."
+                //     />
+                //     <PostItem
+                //         className="post-item"
+                //         title="This is post item 1"
+                //         content="Lorem ipsum dolor sit amet."
+                //     />
+                // </div>
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById("root"));
+        </script>
+    </body>
+</html>

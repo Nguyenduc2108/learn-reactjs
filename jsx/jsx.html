@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSX - React</title>
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script
+            src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+            crossorigin
+        ></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <!-- Phần 1 -->
+        <!-- 
+            JSX => Javascript XML
+
+            1. Luôn dùng React.createElement()? vấn đề?
+            2. JSX? live demo: https://babeljs.io/repl
+            3. JSX không phải HTML,
+                Cần có Javascript, Babel để dùng JSX
+            4. JSX và React-DOM 
+        -->
+
+        <!-- ====================== -->
+        <!-- Phần 2 -->
+        <!-- * Câu hỏi thường gặp
+            - Tại sao khi code thuần dùng map phải join()?
+            - Gặp lỗi khi render từ mảng (prop "key")
+            - Không render được 2 element cùng lúc 
+        -->
+
+        <!-- ====================== -->
+        <!-- Phần 3 -->
+        <!-- 
+        *Hooks
+
+         1. React element types: string , function/class
+            - Wrapper
+                - Header => Header component
+                - Content => Content component
+                - Footer => Footer component
+        2. Biểu diễn đơn giản với JSX 
+        -->
+
+        <div id="app"></div>
+        <!-- Phần 3 -->
+        <script type="text/babel">
+            function Header() {
+                return <div className="header">New Header</div>;
+            }
+
+            class Content extends React.Component {
+                render() {
+                    return <div className="content">New Content</div>;
+                }
+            }
+
+            const app = (
+                <div className="wrapper">
+                    <Header />
+                    <Content />
+                    <div className="footer">Footer</div>
+                </div>
+            );
+
+            ReactDOM.render(app, document.getElementById("app"));
+        </script>
+
+        <!-- <div id="root"></div> -->
+        <!-- Phần 1 + 2 -->
+        <!-- <script type="text/babel">
+            // const course = [
+            //     {
+            //         name: "ReactJS",
+            //     },
+            //     {
+            //         name: "NodeJS",
+            //     },
+            //     {
+            //         name: "VueJS",
+            //     },
+            // ];
+
+            // const ul = (
+            //     <ul>
+            //         {course.map((item, index) => (
+            //             <li key={index}>{item.name}</li>
+            //         ))}
+            //     </ul>
+            // );
+
+            const jsx = (
+                <React.Fragment>
+                    <h1>Hello World</h1>
+                    <p>ReactJS</p>
+                </React.Fragment>
+            );
+
+            ReactDOM.render(jsx, document.getElementById("root"));
+        </script> -->
+    </body>
+</html>
